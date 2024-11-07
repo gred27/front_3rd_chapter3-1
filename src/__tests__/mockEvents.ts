@@ -1,0 +1,40 @@
+import { Event } from '../types.ts';
+
+export const mockEvents = [
+  {
+    id: '1',
+    title: '기존 회의',
+    date: '2024-11-01',
+    startTime: '09:00',
+    endTime: '12:30',
+    description: '기존 팀 미팅',
+    location: '회의실 B',
+    category: '업무',
+    repeat: { type: 'none', interval: 0 },
+    notificationTime: 10,
+  },
+  {
+    id: '2',
+    title: '점심 약속',
+    date: '2024-11-01',
+    startTime: '12:00',
+    endTime: '13:00',
+    description: '팀 점심',
+    location: '한식뷔페',
+    category: '식사',
+    repeat: { type: 'none', interval: 0 },
+    notificationTime: 15,
+  },
+  {
+    id: '3',
+    title: '프로젝트 마감',
+    date: '2024-11-30',
+    startTime: '18:00',
+    endTime: '19:00',
+    description: '프로젝트 마감',
+    location: '사무실',
+    category: '업무',
+    repeat: { type: 'none', interval: 0 },
+    notificationTime: 60,
+  },
+] as Event[];
