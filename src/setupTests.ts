@@ -11,10 +11,12 @@ beforeAll(() => {
 });
 
 beforeEach(() => {
+  vi.useFakeTimers();
   expect.hasAssertions();
 });
 
 afterEach(() => {
+  vi.useRealTimers();
   server.resetHandlers();
   vi.clearAllMocks();
 });
