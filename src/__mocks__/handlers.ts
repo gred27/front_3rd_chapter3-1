@@ -16,7 +16,7 @@ export const handlers = [
 
   http.post<any, EventForm, Event>('/api/events', async ({ request }) => {
     const newEvent = await request.json();
-    const newEventId = randomUUID();
+    const newEventId = `${mockEvents.length + 1}`;
 
     const newEventResponse = { id: newEventId, ...newEvent };
 
