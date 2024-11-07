@@ -14,12 +14,14 @@ beforeAll(() => {
 });
 
 beforeEach(() => {
+  vi.useFakeTimers();
   expect.hasAssertions();
 
   vi.setSystemTime(new Date('2024-10-01'));
 });
 
 afterEach(() => {
+  vi.useRealTimers();
   server.resetHandlers();
   vi.clearAllMocks();
 });
