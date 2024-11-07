@@ -1,17 +1,15 @@
-import { randomUUID } from 'crypto';
-
 import { http, HttpResponse } from 'msw';
 
 import { Event, EventForm } from '../types';
 import { events } from './response/events.json' assert { type: 'json' };
 
-const mockEvents = [...events];
+let mockEvents = [...events];
 
 // ! HARD
 // ! 각 응답에 대한 MSW 핸들러를 작성해주세요. GET 요청은 이미 작성되어 있는 events json을 활용해주세요.
 export const handlers = [
   http.get('/api/events', () => {
-    return HttpResponse.json(events);
+    return HttpResponse.json({ events: mockEvents });
   }),
 
   http.post<any, EventForm, Event>('/api/events', async ({ request }) => {
@@ -44,11 +42,12 @@ export const handlers = [
     const { id } = params;
 
     const deletedEventIndex = mockEvents.findIndex((ev) => ev.id === id);
+    console.log('deletedEventIndex: ', deletedEventIndex);
 
     if (deletedEventIndex < 0) {
       return new HttpResponse('Event not found', { status: 404 });
     }
-    mockEvents.filter((ev) => ev.id !== id);
+    mockEvents = mockEvents.filter((ev) => ev.id !== id);
 
     return HttpResponse.json({ status: 204 });
   }),

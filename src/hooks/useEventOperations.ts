@@ -10,13 +10,18 @@ export const useEventOperations = (editing: boolean, onSave?: () => void) => {
   const fetchEvents = async () => {
     try {
       const response = await fetch('/api/events');
+      console.log('response: ', response);
+      console.log('response: ', response.ok);
+
       if (!response.ok) {
         throw new Error('Failed to fetch events');
       }
       const { events } = await response.json();
+      console.log('events: ', events);
       setEvents(events);
     } catch (error) {
       console.error('Error fetching events:', error);
+      console.log(toast);
       toast({
         title: '이벤트 로딩 실패',
         status: 'error',
