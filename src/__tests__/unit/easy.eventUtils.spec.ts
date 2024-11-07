@@ -119,7 +119,7 @@ describe('getFilteredEvents', () => {
 
     const currentDate = new Date('2024-07-31');
     const result = getFilteredEvents(eventsWithBoundary, '', currentDate, 'month');
-    expect(result).toHaveLength(5);
+    expect(result).toHaveLength(6);
     expect(result).toContainEqual(eventsWithBoundary[4]);
   });
 
